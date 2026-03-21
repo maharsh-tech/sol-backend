@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 OPENROUTER_API_KEY: str = os.getenv("OPENROUTER_API_KEY", "")
-MODEL_NAME: str = os.getenv("MODEL_NAME", "google/gemini-2.5-pro-exp-03-25:free")
+MODEL_NAME: str = os.getenv("MODEL_NAME", "openai/gpt-oss-120b:free")
 CHROMA_DB_PATH: str = os.getenv("CHROMA_DB_PATH", "./chroma_db")
 
 EMBEDDING_MODEL_NAME: str = "all-MiniLM-L6-v2"

@@ -1,0 +1,42 @@
+DEPLOYMENT INSTRUCTIONS
+=======================
+
+LOCAL DEPLOYMENT
+----------------
+1. Activate virtual environment:
+   venv\Scripts\activate  (Windows)
+   source venv/bin/activate  (macOS/Linux)
+
+2. Set environment variables in .env:
+   OPENROUTER_API_KEY=your_key
+   MODEL_NAME=openai/gpt-oss-120b:free
+   CHROMA_DB_PATH=./chroma_db
+
+3. Run the server:
+   uvicorn app.main:app --host 0.0.0.0 --port 8000
+
+PRODUCTION DEPLOYMENT
+---------------------
+1. Use a process manager (gunicorn + uvicorn workers):
+   pip install gunicorn
+   gunicorn app.main:app -w 4 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:8000
+
+2. Set environment variables via your hosting platform (not .env file)
+
+3. Ensure CHROMA_DB_PATH points to a persistent volume
+
+4. Place behind a reverse proxy (nginx/Caddy) with HTTPS
+
+DOCKER DEPLOYMENT (OPTIONAL)
+-----------------------------
+Build:
+  docker build -t knowledge-brain-backend .
+
+Run:
+  docker run -p 8000:8000 --env-file .env knowledge-brain-backend
+
+NOTES
+-----
+- The first request will be slow (embedding model download ~90MB)
+- ChromaDB data persists at CHROMA_DB_PATH
+- Frontend runs separately — configure CORS origins in app/main.py for production

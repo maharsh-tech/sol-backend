@@ -38,7 +38,7 @@ def _compute_confidence(distances: list[float]) -> str:
     return "low"
 
 
-async def ask_question(question: str) -> dict:
+def ask_question(question: str) -> dict:
     """Full RAG pipeline: embed query -> retrieve chunks -> generate answer."""
     query_embedding = embed_query(question)
     results = query_chunks(query_embedding, top_k=TOP_K)
@@ -57,7 +57,7 @@ async def ask_question(question: str) -> dict:
     context = _build_context(documents, metadatas)
     prompt = SYSTEM_PROMPT.format(context=context, question=question)
 
-    answer = await generate_answer(prompt, question)
+    answer = generate_answer(prompt, question)
 
     citations = []
     for doc, meta in zip(documents, metadatas):

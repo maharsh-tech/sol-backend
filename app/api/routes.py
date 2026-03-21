@@ -88,5 +88,5 @@ async def upload_documents(files: list[UploadFile] = File(...)):
 async def ask(body: AskRequest):
     if not body.question.strip():
         raise HTTPException(status_code=400, detail="Question cannot be empty.")
-    result = await ask_question(body.question)
+    result = ask_question(body.question)
     return AskResponse(**result)
