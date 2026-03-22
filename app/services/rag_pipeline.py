@@ -5,7 +5,7 @@ from app.core.config import TOP_K
 
 SYSTEM_PROMPT = """You are a precise document assistant. Answer the user's question using ONLY the context provided below. Do not use any external knowledge. If the answer is not present in the context, say exactly: "Answer not found in the provided documents."
 
-Always be concise. If multiple documents are relevant, cite all of them.
+Always be concise. Do NOT include any inline citation markers (like [1], 【1†source】, etc.) in your answer text. The system handles citations automatically.
 
 Context:
 {context}
