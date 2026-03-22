@@ -18,7 +18,7 @@ def generate_answer(system_prompt: str, user_message: str) -> str:
             "X-OpenRouter-Title": "CompanyOS",
         },
         data=json.dumps({
-            "model": os.getenv("MODEL_NAME", "openai/gpt-oss-120b:free"),
+            "model": os.getenv("MODEL_NAME", "nvidia/nemotron-3-super-120b-a12b:free"),
             "messages": [
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_message},
