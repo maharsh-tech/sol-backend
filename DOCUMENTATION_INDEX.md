@@ -1,6 +1,6 @@
 # Documentation Index
 
-All documentation files for the Knowledge Brain backend:
+All documentation files for the AskOrg AI backend:
 
 | File | Description |
 |------|-------------|

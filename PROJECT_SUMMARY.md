@@ -1,14 +1,17 @@
 # Project Summary
 
-## What is Knowledge Brain?
-Feature 1 of CompanyOS — a RAG (Retrieval-Augmented Generation) document Q&A system.
+## What is AskOrg AI Backend?
+The core API powering two major features: **Feature 1: Knowledge Brain** (RAG) and **Feature 2: Meeting Intelligence** (Audio Analysis).
 
 ## What it Does
-1. Users upload company documents (PDF, Excel, PowerPoint)
-2. System parses, chunks, and embeds the content into a vector database
-3. Users ask natural language questions
-4. System retrieves relevant chunks and generates grounded answers
-5. Every answer includes structured citations (document name, page, snippet)
+**Knowledge Brain:**
+1. Parses, chunks, and embeds uploaded documents (PDF, Excel, PPTX) into ChromaDB.
+2. Retrieves relevant chunks and generates answers using OpenRouter LLMs.
+
+**Meeting Intelligence:**
+1. Accepts raw audio files and transcribes them using the Deepgram API.
+2. Analyses transcripts to generate Executive Summaries, Action Items, and Key Decisions.
+3. Automatically posts meeting briefs to a designated Slack channel.
 
 ## Architecture
 - **Backend**: FastAPI REST API (this project)

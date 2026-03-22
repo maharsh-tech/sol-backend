@@ -1,12 +1,14 @@
-# Knowledge Brain — Backend
+# AskOrg AI — Backend
 
-RAG-powered document Q&A system. Upload PDF, Excel, or PowerPoint files and ask questions — answers are generated strictly from your documents with structured citations.
+Core API powering **Feature 1: Knowledge Brain** (RAG document Q&A) and **Feature 2: Meeting Intelligence** (Audio transcription, AI analysis, Slack integration).
 
 ## Tech Stack
 - **API**: FastAPI
 - **Vector DB**: ChromaDB (local, persistent)
 - **Embeddings**: sentence-transformers (all-MiniLM-L6-v2)
-- **LLM**: OpenRouter API (any model, default: openai/gpt-oss-120b:free)
+- **LLM**: OpenRouter API (Default: Google Gemini 2.0 Flash Lite)
+- **Audio**: Deepgram API (Speech-to-Text transcription)
+- **Integrations**: Slack Incoming Webhooks
 - **Parsers**: PyMuPDF (PDF), openpyxl (Excel), python-pptx (PowerPoint)
 
 ## Quick Start
@@ -19,14 +21,16 @@ uvicorn app.main:app --reload --port 8000
 ```
 
 ## API Endpoints
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | /health | Service status |
-| POST | /upload | Upload & index documents |
-| POST | /ask | Ask a question |
+| Method | Endpoint          | Description |
+|--------|-------------------|-------------|
+| GET    | /health           | Service status |
+| POST   | /upload           | Upload & index documents |
+| POST   | /ask              | Ask a question against documents |
+| POST   | /meeting/analyze  | Transcribe audio & generate meeting analysis |
+| POST   | /meeting/slack    | Post meeting results to Slack |
 
 ## Documentation
 See `DOCUMENTATION_INDEX.md` for the full list of docs.
 
 ## License
-Internal — CompanyOS
+Internal — AskOrg AI

@@ -24,6 +24,7 @@ def generate_answer(system_prompt: str, user_message: str) -> str:
                 {"role": "user", "content": user_message},
             ],
         }),
+        timeout=45,
     )
     response.raise_for_status()
     result = response.json()

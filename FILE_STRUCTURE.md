@@ -23,8 +23,11 @@ sol-backend/
 │   │   └── pptx_parser.py    # python-pptx — extracts text per slide
 │   │
 │   ├── services/
-│   │   ├── chunker.py        # Splits text into overlapping chunks
-│   │   └── rag_pipeline.py   # Full RAG: embed → retrieve → generate
+│   │   ├── chunker.py              # Splits text into overlapping chunks
+│   │   ├── rag_pipeline.py         # Full RAG: embed → retrieve → generate
+│   │   ├── deepgram_service.py     # Transcribes meeting audio
+│   │   ├── meeting_analysis_service.py # AI summary, action items, decisions 
+│   │   └── slack_service.py        # Posts meeting briefs to Slack
 │   │
 │   ├── embeddings/
 │   │   └── embedder.py       # sentence-transformers wrapper

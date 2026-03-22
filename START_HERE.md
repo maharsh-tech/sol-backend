@@ -1,4 +1,4 @@
-# Start Here — Knowledge Brain Backend
+# Start Here — AskOrg AI Backend
 
 ## Prerequisites
 - Python 3.10+
