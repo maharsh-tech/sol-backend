@@ -16,4 +16,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+from app.api.repo_routes import router as repo_router
+
 app.include_router(router)
+app.include_router(repo_router, prefix="/repo")
