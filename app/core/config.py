@@ -22,3 +22,11 @@ UPLOAD_DIR: Path = Path("./uploads")
 UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 
 ALLOWED_EXTENSIONS: set[str] = {".pdf", ".xlsx", ".pptx"}
+
+# ── FAQ Semantic Cache ─────────────────────────────────────────────────────
+FAQ_CACHE_COLLECTION: str = "faq_cache_collection"
+FAQ_SIMILARITY_THRESHOLD: float = float(os.getenv("FAQ_SIMILARITY_THRESHOLD", "0.85"))
+FAQ_CACHE_TOP_K: int = 1
+FAQ_CACHE_TTL_DAYS: int = int(os.getenv("FAQ_CACHE_TTL_DAYS", "30"))
+FAQ_FREQUENCY_THRESHOLD: int = int(os.getenv("FAQ_FREQUENCY_THRESHOLD", "3"))
+FAQ_TEMP_CACHE_SIZE: int = int(os.getenv("FAQ_TEMP_CACHE_SIZE", "500"))

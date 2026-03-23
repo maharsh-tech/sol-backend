@@ -16,6 +16,7 @@ class AskResponse(BaseModel):
     answer: str
     citations: list[Citation]
     confidence: str
+    source: str = "rag"  # "cache" or "rag"
 
 
 class UploadResponse(BaseModel):

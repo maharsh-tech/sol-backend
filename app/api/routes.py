@@ -13,6 +13,7 @@ from app.services.chunker import chunk_text
 from app.embeddings.embedder import embed_texts
 from app.vectorstore.store import add_chunks
 from app.services.rag_pipeline import ask_question
+from app.services.faq_cache import get_popular_questions
 from app.services.deepgram_service import transcribe_audio
 from app.services.meeting_analysis_service import analyse_transcript
 from app.services.slack_service import post_meeting_to_slack
@@ -97,6 +98,13 @@ async def ask(body: AskRequest):
         raise HTTPException(status_code=400, detail="Question cannot be empty.")
     result = ask_question(body.question)
     return AskResponse(**result)
+
+
+@router.get("/faq/popular")
+async def popular_questions():
+    """Return the top frequently asked questions from the semantic cache."""
+    questions = get_popular_questions(limit=5)
+    return {"questions": questions}
 
 
 # ── Meeting Intelligence Endpoints ────────────────────────────────────────────
